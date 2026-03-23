@@ -1,0 +1,31 @@
+<svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="g" />
+            <feMerge>
+                <feMergeNode in="g" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00ffc8" />
+            <stop offset="100%" stop-color="#00d4a8" />
+        </linearGradient>
+    </defs>
+    <!-- Shield outline -->
+    <path d="M50 5 L92 22 L92 65 Q92 90 50 115 Q8 90 8 65 L8 22 Z" stroke="url(#shieldG)" stroke-width="3" fill="none" filter="url(#glow)" />
+    <!-- Inner shield line -->
+    <path d="M50 15 L82 28 L82 62 Q82 82 50 105 Q18 82 18 62 L18 28 Z" stroke="rgba(0,255,200,.25)" stroke-width="1" fill="none" />
+    <!-- Circuit lines -->
+    <line x1="18" y1="45" x2="35" y2="45" stroke="rgba(0,255,200,.2)" stroke-width="1" />
+    <line x1="65" y1="45" x2="82" y2="45" stroke="rgba(0,255,200,.2)" stroke-width="1" />
+    <line x1="50" y1="15" x2="50" y2="30" stroke="rgba(0,255,200,.15)" stroke-width="1" />
+    <line x1="25" y1="70" x2="35" y2="60" stroke="rgba(0,255,200,.15)" stroke-width="1" />
+    <line x1="75" y1="70" x2="65" y2="60" stroke="rgba(0,255,200,.15)" stroke-width="1" />
+    <!-- Circuit dots -->
+    <circle cx="35" cy="45" r="2" fill="#00ffc8" opacity=".4" />
+    <circle cx="65" cy="45" r="2" fill="#00ffc8" opacity=".4" />
+    <circle cx="50" cy="30" r="2" fill="#00ffc8" opacity=".3" />
+    <!-- Letter P -->
+    <text x="50" y="72" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="42" fill="#00ffc8" filter="url(#glow)">P</text>
+</svg>
