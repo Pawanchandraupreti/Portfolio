@@ -273,7 +273,71 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 70%
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-text-col {
+            flex: 1;
+            max-width: 750px;
+        }
+
+        .hero-img-col {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-pic-container {
+            width: clamp(250px, 25vw, 420px);
+            height: clamp(250px, 25vw, 420px);
+            border-radius: 50%;
+            position: relative;
+            padding: 8px;
+            background: linear-gradient(135deg, rgba(0, 255, 200, 0.15) 0%, rgba(0, 255, 200, 0) 100%);
+            z-index: 3;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .profile-pic-container:hover {
+            transform: scale(1.02) translateY(-5px);
+        }
+
+        .profile-pic-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: var(--bg2);
+            filter: grayscale(15%) contrast(1.05);
+            transition: filter 0.5s var(--ease), box-shadow 0.5s var(--ease);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-pic-container:hover .profile-pic {
+            filter: grayscale(0%) contrast(1.1);
+            box-shadow: 0 15px 50px rgba(0, 255, 200, 0.15);
         }
 
         .hero-name {
@@ -1756,7 +1820,22 @@
             }
 
             .hero-content {
-                max-width: 100%
+                flex-direction: column-reverse; /* image above text */
+                text-align: center;
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+            .hero-text-col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-cta {
+                justify-content: center;
+            }
+            .profile-pic-container {
+                width: clamp(200px, 50vw, 250px);
+                height: clamp(200px, 50vw, 250px);
             }
 
             .hero-name .line,
@@ -1895,18 +1974,25 @@
             <div class="hero-noise"></div>
         </div>
         <div class="hero-content">
-            <h1 class="hero-name reveal">
-                <span class="line scramble">Pawan</span>
-                <span class="line-stroke scramble">Chandra</span>
-                <span class="line scramble">Upreti</span>
-            </h1>
-            <div class="hero-subtitle reveal reveal-delay-1"><span class="typewriter"></span><span
-                    class="cursor-blink"></span></div>
-            <p class="hero-desc reveal reveal-delay-2">Cybersecurity developer &amp; Python engineer &mdash; building
-                systems that detect threats, break assumptions, and prove that security is never optional.</p>
-            <div class="hero-cta reveal reveal-delay-3">
-                <a href="#projects" class="btn btn-fill magnetic">View Projects</a>
-                <a href="#contact" class="btn magnetic">Get in Touch</a>
+            <div class="hero-text-col">
+                <h1 class="hero-name reveal">
+                    <span class="line scramble">Pawan</span>
+                    <span class="line-stroke scramble">Chandra</span>
+                    <span class="line scramble">Upreti</span>
+                </h1>
+                <div class="hero-subtitle reveal reveal-delay-1"><span class="typewriter"></span><span
+                        class="cursor-blink"></span></div>
+                <p class="hero-desc reveal reveal-delay-2">Cybersecurity developer &amp; Python engineer &mdash; building
+                    systems that detect threats, break assumptions, and prove that security is never optional.</p>
+                <div class="hero-cta reveal reveal-delay-3">
+                    <a href="#projects" class="btn btn-fill magnetic">View Projects</a>
+                    <a href="#contact" class="btn magnetic">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-img-col reveal reveal-delay-4">
+                <div class="profile-pic-container">
+                    <img src="./Picture.png" alt="Pawan Chandra Upreti" class="profile-pic" loading="eager">
+                </div>
             </div>
         </div>
         <div class="hero-circles">
@@ -2071,7 +2157,7 @@
                     <div class="project-stack">
                         <span>Python</span><span>Scikit-Learn</span><span>Logging</span><span>ML</span>
                     </div>
-                    <a href="https://github.com/Pawanchandraupreti" target="_blank" rel="noopener noreferrer"
+                    <a href="https://github.com/Pawanchandraupreti/Python_Based_IDS" target="_blank" rel="noopener noreferrer"
                         class="project-link">View on GitHub</a>
                 </article>
                 <article class="project-card reveal-left reveal-delay-1">
@@ -2086,7 +2172,7 @@
                     <div class="project-stack">
                         <span>Python</span><span>Requests</span><span>JSON</span><span>HTTP</span>
                     </div>
-                    <a href="https://github.com/Pawanchandraupreti" target="_blank" rel="noopener noreferrer"
+                    <a href="https://github.com/Pawanchandraupreti/Cyber-Project" target="_blank" rel="noopener noreferrer"
                         class="project-link">View on GitHub</a>
                 </article>
                 <article class="project-card reveal-left reveal-delay-2">
@@ -2103,7 +2189,7 @@
                         manual auditing effort and improve overall network security posture.</p>
                     <div class="project-stack"><span>Python</span><span>Socket
                             API</span><span>python-nmap</span><span>ReportLab</span></div>
-                    <a href="https://github.com/Pawanchandraupreti" target="_blank" rel="noopener noreferrer"
+                    <a href="https://github.com/Pawanchandraupreti/Vulnerability-Scanner" target="_blank" rel="noopener noreferrer"
                         class="project-link">View on GitHub</a>
                 </article>
             </div>
